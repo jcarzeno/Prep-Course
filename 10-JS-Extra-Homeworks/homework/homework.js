@@ -10,14 +10,24 @@ function deObjetoAmatriz(objeto){
       C: 3
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
+ var newArray = Object.keys(objeto)
+  .map(function(value) {
+    return [value,objeto[value]]
+    });
+    return newArray
 }
 
 
 function numberOfCharacters(string) {
-  //La función recibe un string. Recorre el srting y devuelve el caracter con el número de veces que aparece 
+  //La función recibe un string. Recorre el string y devuelve el caracter con el número de veces que aparece 
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
+  var objetoAcc = {} //declaramos un objeto vacio como acumulador
+  string.split("").forEach(function(letra){ //con .split() tranformamso a "string" en arreglo. Con el forEach lo recorremos. 
+    objetoAcc[letra] ? objetoAcc[letra]++ : objetoAcc[letra] = 1;
+  })
+  return objetoAcc
 }
 
 
@@ -26,7 +36,19 @@ function capToFront(s) {
   //al principio de la palabra.
   //Ejemplo: soyHENRY -> HENRYsoy
   //Escribe tu código aquí
+  var mayuscula = "";
+  var minuscula = "";
+  for (i = 0; i < s.length; i++) {
+    if (s[i] === s[i].toUpperCase()) {
+      mayuscula = mayuscula + s[i];
+    } else {
+      minuscula = minuscula + s[i];
+    }
+  }
+  return mayuscula + minuscula;
 }
+
+
 
 
 function asAmirror(str) {
@@ -35,7 +57,13 @@ function asAmirror(str) {
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
-} 
+ 
+  var espejo = '';
+  for(let i = str.length -1; i >= 0; i--) {
+    espejo += str[i];
+  };
+ return espejo.split(' ').reverse().join(' ');
+}
 
 
 function capicua(numero){
@@ -43,6 +71,16 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
+//Compararemos la variable 'numero'
+
+  if((numero.toString().split('').reverse().join('')) === numero.toString()){ //convertido a Array será numero = [2, 0, 2];    //Con el método reverse, invertimos la posición de los elementos numero = [2, 0, 2]; //Una vez hecho eso, unimos el Array para convertirlo en un string usando el método join, entonces aleatorio será numero = '202';
+    return "Es capicua"
+
+}else{
+
+  return "No es capicua"
+} 
+
 }
 
 
@@ -50,6 +88,11 @@ function deleteAbc(cadena){
   //Define una función que elimine las letras "a", "b" y "c" de la cadena dada 
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
   //Escribe tu código aquí
+
+  nuevaCadena = cadena.split("").filter(x => x !== "a" && x !== "b" && x !== "c")
+
+  return nuevaCadena.join("")
+
 }
 
 
@@ -57,6 +100,8 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
+  nuevoArray = arr.sort((a, b)=> a.length - b.length)
+  return nuevoArray;
 }
 
 
