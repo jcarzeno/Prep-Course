@@ -111,6 +111,8 @@ function buscoInterseccion(arreglo1, arreglo2){
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
   //Escribe tu código aquí  
+arrayIntersection = arreglo1.filter(value => arreglo2.includes(value))
+return arrayIntersection
 }
 
 
